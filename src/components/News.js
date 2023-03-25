@@ -7,7 +7,7 @@ export default function News() {
   const getMovieRequest = async () => {
     const apiKey = "a3c2f45046be4445969400abb2a79f49";
     const country = "in";
-    const category = "business";
+    const category = "politics";
     const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}`;
 
     const response = await fetch(url);

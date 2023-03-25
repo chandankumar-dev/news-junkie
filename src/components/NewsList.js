@@ -1,4 +1,5 @@
 import React from "react";
+import { Tooltip } from "@material-tailwind/react";
 
 export default function NewsList(props) {
   function add3Dots(text, limit) {
@@ -18,15 +19,23 @@ export default function NewsList(props) {
             : "https://via.placeholder.com/600x400"
         }
         alt="News article"
-        className="w-full object-cover object-center"
-        style={{ width: 400, height: 180 }}
+        className="object-cover object-center w-[400px] h-[180px]"
       />
       <div className="p-4">
-        <h3 className="font-semibold text-lg mb-2">News article title 1</h3>
-        <p className="text-gray-700 text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <Tooltip className="w-72" content={props.news.title}>
+          <h3 className="font-semibold text-lg mb-2">
+            {add3Dots(props.news.title, 50)}
+          </h3>
+        </Tooltip>
+        <Tooltip
+          className="w-72"
+          content={props.news.description}
+          placement="bottom-start"
+        >
+          <p className="text-gray-700 text-base">
+            {add3Dots(props.news.description, 100)}
+          </p>
+        </Tooltip>
       </div>
     </div>
   );

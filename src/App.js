@@ -2,11 +2,15 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import News from "./components/News";
 
+import { ThemeProvider } from "@material-tailwind/react";
+
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <News />
+      <ThemeProvider>
+        <Navbar />
+        <News />
+      </ThemeProvider>
     </div>
   );
 }
