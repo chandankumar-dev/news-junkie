@@ -11,32 +11,34 @@ export default function NewsList(props) {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img
-        src={
-          props.news.urlToImage !== null
-            ? props.news.urlToImage
-            : "https://via.placeholder.com/600x400"
-        }
-        alt="News article"
-        className="object-cover object-center w-[400px] h-[180px]"
-      />
-      <div className="p-4">
-        <Tooltip className="w-72" content={props.news.title}>
-          <h3 className="font-semibold text-lg mb-2">
-            {add3Dots(props.news.title, 50)}
-          </h3>
-        </Tooltip>
-        <Tooltip
-          className="w-72"
-          content={props.news.description}
-          placement="bottom-start"
-        >
-          <p className="text-gray-700 text-base">
-            {add3Dots(props.news.description, 100)}
-          </p>
-        </Tooltip>
+    <a href={props.news.url} target="_blank" rel="noreferrer">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[350px]">
+        <img
+          src={
+            props.news.urlToImage !== null
+              ? props.news.urlToImage
+              : "https://via.placeholder.com/600x400"
+          }
+          alt="News article"
+          className="object-cover object-center w-[400px] h-[180px]"
+        />
+        <div className="p-3">
+          <Tooltip className="w-72" content={props.news.title}>
+            <h3 className="font-semibold text-lg mb-2">
+              {add3Dots(props.news.title, 50)}
+            </h3>
+          </Tooltip>
+          <Tooltip
+            className="w-72"
+            content={props.news.description}
+            placement="bottom-start"
+          >
+            <p className="text-gray-700 text-base">
+              {add3Dots(props.news.description, 100)}
+            </p>
+          </Tooltip>
+        </div>
       </div>
-    </div>
+    </a>
   );
 }
