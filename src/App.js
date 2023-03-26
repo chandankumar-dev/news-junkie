@@ -6,12 +6,12 @@ import { ThemeProvider } from "@material-tailwind/react";
 
 export default function App() {
   const [newsData, setNewsData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("general");
 
   const getMovieRequest = async () => {
     const apiKey = "a3c2f45046be4445969400abb2a79f49";
     const country = "in";
-    const category = "technology";
-    const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${selectedCategory}&apiKey=${apiKey}`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -20,13 +20,17 @@ export default function App() {
 
   useEffect(() => {
     getMovieRequest();
-  }, []);
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    console.log(selectedCategory);
+  }, [selectedCategory]);
 
   return (
     <div className="App">
       <ThemeProvider>
-        <Navbar />
-        <News newsData={newsData} />
+        <Navbar setSelectedCategory={setSelectedCategory} />
+        <News newsData={newsData} selectedCategory={selectedCategory} />
       </ThemeProvider>
     </div>
   );

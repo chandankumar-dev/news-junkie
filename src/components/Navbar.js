@@ -2,17 +2,16 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { category: "home" },
+  { category: "general" },
   { category: "business" },
   { category: "entertainment" },
-  { category: "general" },
   { category: "health" },
   { category: "science" },
   { category: "sports" },
   { category: "technology" },
 ];
 
-export default function Navbar() {
+export default function Navbar(props) {
   return (
     <>
       <div className="min-h-full">
@@ -37,6 +36,9 @@ export default function Navbar() {
                         {navigation.map((item) => (
                           <button
                             key={item.category}
+                            onClick={() =>
+                              props.setSelectedCategory(item.category)
+                            }
                             className="text-gray-300 hover:bg-white hover:text-black rounded-md px-3 py-2 text-lg font-normal capitalize"
                           >
                             {item.category}
@@ -70,6 +72,7 @@ export default function Navbar() {
                   {navigation.map((item) => (
                     <Disclosure.Button
                       key={item.category}
+                      onClick={() => props.setSelectedCategory(item.category)}
                       as="a"
                       className="text-gray-300 hover:bg-white hover:text-black block rounded-md px-3 py-2 text-base font-medium capitalize"
                     >

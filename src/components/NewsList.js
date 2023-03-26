@@ -12,7 +12,7 @@ export default function NewsList(props) {
 
   return (
     <a href={props.news.url} target="_blank" rel="noreferrer">
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[350px]">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[350px] md:h-[400px] lg:h-[350px]">
         <img
           src={
             props.news.urlToImage !== null
@@ -34,7 +34,7 @@ export default function NewsList(props) {
             placement="bottom-start"
           >
             <p className="text-gray-700 text-base">
-              {add3Dots(props.news.description, 100)}
+              {add3Dots(props.news.description, 80)}
             </p>
           </Tooltip>
         </div>
